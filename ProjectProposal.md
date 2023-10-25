@@ -29,6 +29,8 @@ We plan to meet twice a week to work on this project. On weeks where code can be
 
 ### Resources
 
-ur mom
+https://en.wikipedia.org/wiki/Seam_carving
+https://cs.brown.edu/courses/cs129/results/proj3/taox/
+
 
 ### Group Contributions
