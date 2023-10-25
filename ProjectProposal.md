@@ -40,4 +40,3 @@ https://courses.cs.washington.edu/courses/cse373/20wi/homework/seamcarving/#seam
 https://sandipanweb.wordpress.com/2017/10/14/seam-carving-using-dynamic-programming-to-implement-context-aware-image-resizing-in-python/
 
 ### Group Contributions
-``
