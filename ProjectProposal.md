@@ -29,4 +29,6 @@ We plan to meet twice a week to work on this project. On weeks where code can be
 
 ### Resources
 
+ur mom
+
 ### Group Contributions
