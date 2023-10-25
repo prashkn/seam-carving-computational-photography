@@ -30,9 +30,13 @@ We plan to meet twice a week to work on this project. On weeks where code can be
 ### Resources
 
 https://en.wikipedia.org/wiki/Seam_carving
+
 https://cs.brown.edu/courses/cs129/results/proj3/taox/
+
 https://avikdas.com/2019/05/14/real-world-dynamic-programming-seam-carving.html
+
 https://courses.cs.washington.edu/courses/cse373/20wi/homework/seamcarving/#seam-carving-algorithm
+
 https://sandipanweb.wordpress.com/2017/10/14/seam-carving-using-dynamic-programming-to-implement-context-aware-image-resizing-in-python/
 
 ### Group Contributions
