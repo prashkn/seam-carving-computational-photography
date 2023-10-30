@@ -29,7 +29,7 @@ We plan to meet twice a week to work on this project. On weeks where code can be
 
 ### Resources
 
-https://en.wikipedia.org/wiki/Seam_carving
+https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf
 
 https://cs.brown.edu/courses/cs129/results/proj3/taox/
 
@@ -40,3 +40,12 @@ https://courses.cs.washington.edu/courses/cse373/20wi/homework/seamcarving/#seam
 https://sandipanweb.wordpress.com/2017/10/14/seam-carving-using-dynamic-programming-to-implement-context-aware-image-resizing-in-python/
 
 ### Group Contributions
+
+We identify 4 distinct parts to this project:
+
+1. Setting up the seam carving algorithm (creating the energy mapping, creating a cost matrix, etc.)
+2. Determining the "minimum importance" seam each time and removing accordingly
+3. Testing & tuning
+4. Creating the website
+
+We plan to do most of these parts together, with a split of ownership over these 4 parts. So, Prashant will take ownership over part _ and part _, while Trisha will take ownership over part _ and part _. As mentioned before, we will still help each other on all parts, as we are both genuinely interested in this algorithm and developing/applying it.
