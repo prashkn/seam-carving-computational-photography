@@ -24,10 +24,12 @@ We plan to meet twice a week to work on this project. On weeks where code can be
 ### Evaluations
 
 - Creating test cases for this algorithm will be quite hard; we initially thought of creating masks to cover objects in the image we wish to preserve after the seam carving algorithm is done, and test, through template matching, if the objects are still present after seam carving.
-  - However, seam carving tends to warp the original objects if the width and height are too constrained; hence, it will be hard to perform a 1-to-1 template match.
+  - However, seam carving can slightly warp the original objects if the width and height are too constrained; hence, it will be hard to perform a 1-to-1 template match.
 - Therefore, we will perform eye tests on a variety of images; natural images, manmade objects, etc. through both a strong height constraint, or width constraint. We will make a mental note of which objects we hope to see after the seam carving, and see if they are still in the image with minimal warping after the algorithm.
 
 ### Resources
+
+There are no equipment or data we need to complete this project; we just need to run our seam carving algorithm on images. However, here are some resources to help us implement the algorithm:
 
 https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf
 
@@ -48,4 +50,4 @@ We identify 4 distinct parts to this project:
 3. Testing & tuning
 4. Creating the website
 
-We plan to do most of these parts together, with a split of ownership over these 4 parts. So, Prashant will take ownership over part _ and part _, while Trisha will take ownership over part _ and part _. As mentioned before, we will still help each other on all parts, as we are both genuinely interested in this algorithm and developing/applying it.
+We plan to do all of these parts together, with a split of ownership over these 4 parts. So, Prashant will take ownership over part 2 and part 4, while Trisha will take ownership over part 1 and part 3. As mentioned before, we will still help each other on all parts, as we are both genuinely interested in this algorithm and developing/applying it.
