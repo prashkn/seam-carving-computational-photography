@@ -6,7 +6,7 @@ import random
 import numpy as np
 
 
-def find_vertical_seam(im):
+def find_seam(im):
     """
     Choose a competent seam to eventually remove
     """
