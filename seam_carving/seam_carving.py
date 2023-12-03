@@ -40,11 +40,11 @@ def findseam(im):
 
     # calculate energy paths
     e_paths = np.zeros([num_rows, num_cols])
-    e_paths[0,:] = energy[0,:]
+    e_paths[0,:] = e_map[0,:]
 
     for row in np.arange(1,num_rows):
-        e_paths[row,0] = energy[row,0]+min(e_paths[row-1,:2])
-        e_paths[row, num_cols-1] = energy[row, num_cols-1] + np.min(e_paths[row-1, num_cols-2:])
+        e_paths[row,0] = e_map[row,0]+min(e_paths[row-1,:2])
+        e_paths[row, num_cols-1] = e_map[row, num_cols-1] + np.min(e_paths[row-1, num_cols-2:])
         
         channels = np.zeros([num_cols-2,3])
         channels[:,0] = e_paths[row-1, :num_cols-2]
@@ -102,9 +102,3 @@ def removeseam(im,seam):
         keep = keep.reshape(s_rows, s_cols - 1, colors)
 
     return keep
-
-def rotate_im(im, num_rots):
-    # rotate once and then 3 more times to rotate back to normal
-    out = np.rot90(im, num_rots)
-    return out
-    
