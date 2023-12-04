@@ -3,8 +3,22 @@ Utils
 """
 
 import random
+import matplotlib.pyplot as plt
 import numpy as np
 
+def save_frame(im, seam, is_vertical_seam, index):
+    file_name = f'images/frame_by_frame_outputs/{"vertical" if is_vertical_seam else "horizontal"}_{index}_seam_removed.png'
+    curr = np.copy(im)
+    num_rows, num_cols = np.shape(np.sum(curr,axis=2).astype(np.uint8))
+    
+    curr[range(num_rows),seam,:] = [255,0,0]
+
+    plt.figure()
+    plt.axis("off")
+    plt.imshow(curr[:,:] if is_vertical_seam else np.rot90(curr, 3)[:,:])
+    plt.savefig(file_name)
+    
+    return
 
 def findseam(im):
     """
