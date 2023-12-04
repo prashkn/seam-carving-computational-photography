@@ -14,12 +14,12 @@ The notebook will prompt you to upload an image, and specify the width and heigh
 
 Original
 
-![](seam_carving/images/readme_images/eiffel_tower_input.jpg)
+![](images/readme_images/eiffel_tower_input.jpg)
 
 Transformation
 
-![](seam_carving/images/readme_images/eiffel_tower_output.gif)
+![](images/readme_images/eiffel_tower_output.gif)
 
 Output
 
-![](seam_carving/images/readme_images/eiffel_tower_output.png)
+![](images/readme_images/eiffel_tower_output.png)
