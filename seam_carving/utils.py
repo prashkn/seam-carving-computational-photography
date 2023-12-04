@@ -57,34 +57,13 @@ def findseam(im):
 
     for row in np.arange(h-2, -1, -1):
         prev = seam[row+1]
-        if prev == 0:
-            if e_paths[row, prev]<=e_paths[row, prev + 1]:
-                seam[row] = prev    
-            else:
-                seam[row] = prev + 1
-                
-        if prev != 0 and prev != w-1:
-            if e_paths[row, prev - 1] < e_paths[row, prev] and e_paths[row, prev - 1] < e_paths[row, prev + 1]:
-                seam[row] = prev - 1
-            elif e_paths[row, prev + 1] < e_paths[row, prev - 1] and e_paths[row, prev + 1] < e_paths[row, prev]:
-                seam[row] = prev + 1
-            else:
-                seam[row] = prev  
-                
-        if prev == num_cols-1:
-            if e_paths[row, prev]<=e_paths[row, prev - 1]:
-                seam[row] = prev    
-            else:
-                seam[row] = prev - 1
+        
+        seam[row] = assign_seam(row, prev, w, e_paths)
     
     return seam, e_paths
 
 
 def removeseam(im, seam):
-    """ 
-    Removes given seam from an image
-    """
-    
     if len(np.shape(im)) < 3:
         s_rows, s_cols = np.shape(im)
         bin_mask = np.ones(np.shape(im[:,:]), dtype=bool)
@@ -102,3 +81,28 @@ def removeseam(im, seam):
         carved = carved.reshape(s_rows, s_cols - 1, colors)
 
     return carved
+
+def assign_seam(row, prev, w, e_paths):
+    out = -1
+    if prev == 0:
+        if e_paths[row, prev]<=e_paths[row, prev + 1]:
+            out = prev    
+        else:
+            out = prev + 1
+
+    if prev != 0 and prev != w-1:
+        if e_paths[row, prev - 1] < e_paths[row, prev] and e_paths[row, prev - 1] < e_paths[row, prev + 1]:
+            out = prev - 1
+        elif e_paths[row, prev + 1] < e_paths[row, prev - 1] and e_paths[row, prev + 1] < e_paths[row, prev]:
+            out = prev + 1
+        else:
+            out = prev  
+
+    if prev == w-1:
+        if e_paths[row, prev]<=e_paths[row, prev - 1]:
+            out = prev    
+        else:
+            out = prev - 1
+    
+    return out
+        
