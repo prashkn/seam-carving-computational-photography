@@ -23,3 +23,13 @@ Transformation
 Output
 
 ![](images/readme_images/eiffel_tower_output.png)
+
+### Apples and Oranges
+
+Original
+
+![](images/samples/apple_orange_apart.png)
+
+Output
+
+![](images/outputs/apple_orange_apart_output.png)

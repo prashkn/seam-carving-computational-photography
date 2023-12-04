@@ -10,33 +10,32 @@ def findseam(im):
     """
     Find a seam running from top to bottom of image or from right to left (once image is rotated ccw)
     """
-
-    if len(np.shape(im)) < 3: g_im = im.astype(np.uint8)
-    else: g_im = np.sum(im,axis=2).astype(np.uint8)
+    g_im = np.sum(im,axis=2) if len(np.shape(im)) == 3 else im
+    g_im = g_im.astype(np.uint8)
         
     h, w = np.shape(g_im)
 
-
     # find energy map
     e_map = np.copy(g_im)
+    mid = g_im[1:-1,1:-1]
     
-    e_map[1:-1,1:-1] = (abs(g_im[1:-1,1:-1] - g_im[:-2,1:-1]) + abs(g_im[1:-1,1:-1] - g_im[2:,1:-1]) +
-                     abs(g_im[1:-1,1:-1] - g_im[1:-1,:-2]) + abs(g_im[1:-1,1:-1] - g_im[1:-1,2:]))
+    e_map[1:-1,1:-1] = (abs(mid - g_im[:-2,1:-1]) + abs(mid - g_im[2:,1:-1]) +
+                     abs(mid - g_im[1:-1,:-2]) + abs(mid - g_im[1:-1,2:]))
 
     e_map[:,0] = (abs(g_im[:,0] - g_im[:,1]) + abs(g_im[:,0] - g_im[:,-1]))
     e_map[:,-1] = (abs(g_im[:,-1] - g_im[:,-2]) + abs(g_im[:,-1] - g_im[:,0]))
 
     e_map[:,1:-1] = (abs(g_im[:,1:-1]-g_im[:,:-2]) + abs(g_im[:,1:-1]-g_im[:,2:]))
 
-    # differences along columns
-    e_map2 = np.copy(g_im)
-    e_map2[0,:] = (abs(g_im[0,:] - g_im[1,:]) + abs(g_im[0,:] - g_im[-1,:]))
-    e_map2[1,:] = (abs(g_im[-1,:] - g_im[-2,:]) + abs(g_im[-1,:] - g_im[0,:]))
+    # columns
+    e_map_y = np.copy(g_im)
+    e_map_y[0,:] = (abs(g_im[0,:] - g_im[1,:]) + abs(g_im[0,:] - g_im[-1,:]))
+    e_map_y[1,:] = (abs(g_im[-1,:] - g_im[-2,:]) + abs(g_im[-1,:] - g_im[0,:]))
 
-    e_map2[1:-1,:] = (abs(g_im[1:-1,:] - g_im[1:-1,:]) + abs(g_im[1:-1,:] - g_im[1:-1,:]))
-    e_map += e_map2
+    e_map_y[1:-1,:] = (abs(g_im[1:-1,:] - g_im[1:-1,:]) + abs(g_im[1:-1,:] - g_im[1:-1,:]))
+    e_map += e_map_y
 
-
+    
     # calculate energy paths
     e_paths = np.zeros([h, w])
     e_paths[0,:] = e_map[0,:]
@@ -57,7 +56,6 @@ def findseam(im):
 
     for row in np.arange(h-2, -1, -1):
         prev = seam[row+1]
-        
         seam[row] = assign_seam(row, prev, w, e_paths)
     
     return seam, e_paths
@@ -85,10 +83,7 @@ def removeseam(im, seam):
 def assign_seam(row, prev, w, e_paths):
     out = -1
     if prev == 0:
-        if e_paths[row, prev]<=e_paths[row, prev + 1]:
-            out = prev    
-        else:
-            out = prev + 1
+        out = prev if e_paths[row, prev] <= e_paths[row, prev + 1] else prev + 1
 
     if prev != 0 and prev != w-1:
         if e_paths[row, prev - 1] < e_paths[row, prev] and e_paths[row, prev - 1] < e_paths[row, prev + 1]:
@@ -99,10 +94,7 @@ def assign_seam(row, prev, w, e_paths):
             out = prev  
 
     if prev == w-1:
-        if e_paths[row, prev]<=e_paths[row, prev - 1]:
-            out = prev    
-        else:
-            out = prev - 1
+        out = prev if e_paths[row, prev]<=e_paths[row, prev - 1] else prev - 1
     
     return out
         
