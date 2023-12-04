@@ -94,11 +94,11 @@ def removeseam(im, seam):
     
     for row in range(s_rows):
         bin_mask[row, seam[row]]=False
-    keep = im[bin_mask]
+    carved = im[bin_mask]
     
     if len(np.shape(im)) < 3:
-        keep = keep.reshape(s_rows, s_cols - 1)
+        carved = carved.reshape(s_rows, s_cols - 1)
     else:
-        keep = keep.reshape(s_rows, s_cols - 1, colors)
+        carved = carved.reshape(s_rows, s_cols - 1, colors)
 
-    return keep
+    return carved
