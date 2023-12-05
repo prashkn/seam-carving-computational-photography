@@ -13,9 +13,9 @@ def save_frame(im, seam, is_vertical_seam, index):
     
     curr[range(num_rows),seam,:] = [255,0,0]
 
-    plt.figure()
+    plt.figure(figsize=(5,5))
     plt.axis("off")
-    plt.imshow(curr[:,:] if is_vertical_seam else np.rot90(curr, 3)[:,:])
+    plt.imshow(curr if is_vertical_seam else np.rot90(curr, 3))
     plt.savefig(file_name)
     
     return
