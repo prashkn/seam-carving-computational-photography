@@ -51,3 +51,7 @@ We identify 4 distinct parts to this project:
 4. Creating the website
 
 We plan to do all of these parts together, with a split of ownership over these 4 parts. So, Prashant will take ownership over part 2 and part 4, while Trisha will take ownership over part 1 and part 3. As mentioned before, we will still help each other on all parts, as we are both genuinely interested in this algorithm and developing/applying it.
+
+Edit:
+
+- We removed the website aspect of this project after our proposal was made. We did this because we were able to make our jupyter notebook interactive enough, and wanted to focus our time on the actual seam carving algorithm rather than the UI. We got this approved: https://campuswire.com/c/G59BF2AA8/feed/620
